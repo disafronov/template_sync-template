@@ -1,0 +1,172 @@
+name: Sync repos from template
+
+on:
+  schedule:
+    - cron: '0 2 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  prepare-template:
+    runs-on: ubuntu-latest
+    outputs:
+      template_tag: ${{ steps.get-tag.outputs.template_tag }}
+      repos_matrix: ${{ steps.repos.outputs.repos_matrix }}
+    steps:
+      - name: Checkout updater repository
+        uses: actions/checkout@v4
+
+      - name: Verify required files exist and are valid
+        id: verify
+        shell: sh
+        run: |
+          if [ ! -s template.repo ]; then
+            echo "template.repo not found or empty" >&2
+            exit 1
+          fi
+          if [ "$(wc -l < template.repo)" -ne 1 ]; then
+            echo "template.repo must contain exactly one line" >&2
+            exit 1
+          fi
+          if [ ! -s repos.list ]; then
+            echo "repos.list not found or empty" >&2
+            exit 1
+          fi
+          if [ ! -s include.list ]; then
+            echo "include.list not found or empty" >&2
+            exit 1
+          fi
+          if [ -f delete.list ]; then
+            if [ ! -s delete.list ]; then
+              echo "delete.list is empty; deletion step will be skipped"
+            fi
+          else
+            echo "delete.list not found; deletion step will be skipped"
+          fi
+
+      - name: Read template repository
+        id: template
+        shell: sh
+        run: echo "template_repo=$(cat template.repo)" >> $GITHUB_OUTPUT
+
+      - name: Checkout template repository
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ steps.template.outputs.template_repo }}
+          path: template
+          fetch-depth: 0
+          fetch-tags: true
+
+      - name: Determine latest semver tag and checkout
+        id: get-tag
+        shell: sh
+        run: |
+          # Strict SemVer (MAJOR.MINOR.PATCH) without pre-release/build
+          LATEST_TAG=$(git -C template tag --list 'v[0-9]*.[0-9]*.[0-9]*' --sort=-v:refname | head -n 1)
+          if [ -z "$LATEST_TAG" ]; then
+            echo "No SemVer tags vMAJOR.MINOR.PATCH found" >&2
+            exit 1
+          fi
+          git -C template checkout "$LATEST_TAG"
+          echo "template_tag=$LATEST_TAG" >> "$GITHUB_OUTPUT"
+
+      - name: Remove template .git directory
+        shell: sh
+        run: |
+          rm -rf template/.git
+
+      - name: Upload template artifact (include hidden files)
+        uses: actions/upload-artifact@v4
+        with:
+          name: template-bundle
+          path: template
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Build repos matrix from repos.list
+        id: repos
+        shell: sh
+        run: |
+          set -eu
+          tmp="$(mktemp)"; : > "$tmp"
+
+          # filter: drop comments/empty, exclude template and self
+          grep -vE '^[[:space:]]*(#|$)' repos.list \
+            | grep -F -v -x \
+                -e "${{ steps.template.outputs.template_repo }}" \
+                -e "${{ github.repository }}" \
+            > "$tmp" || true
+
+          # fail if empty after exclusions
+          if [ "$(wc -l < "$tmp")" -eq 0 ]; then
+            echo "repos.list has no usable entries after exclusions" >&2
+            exit 1
+          fi
+
+          # build JSON array
+          JSON_ARRAY=$(jq -R . < "$tmp" | jq -c -s .)
+          echo "repos_matrix=$JSON_ARRAY" >> "$GITHUB_OUTPUT"
+
+  sync-repos:
+    runs-on: ubuntu-latest
+    needs: prepare-template
+    strategy:
+      fail-fast: false
+      matrix:
+        repo: ${{ fromJson(needs.prepare-template.outputs.repos_matrix) }}
+    steps:
+      - name: Checkout updater repository
+        uses: actions/checkout@v4
+
+      - name: Download template artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: template-bundle
+          path: template
+
+      - name: Checkout target repository (default branch)
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ matrix.repo }}
+          path: repo
+          token: ${{ secrets.REPO_UPDATE_TOKEN }}
+
+      - name: Apply updates from template per include.list
+        shell: sh
+        run: |
+          rsync -av \
+            --include-from=include.list \
+            --exclude='*' \
+            --delete-after \
+            template/ \
+            repo/
+
+      - name: Apply deletions per delete.list (if present)
+        if: ${{ hashFiles('delete.list') != '' }}
+        shell: sh
+        run: |
+          set -eu
+          while IFS= read -r raw || [ -n "$raw" ]; do
+            path=$(printf '%s' "$raw" | sed 's/^[[:space:]]*//')
+            case "$path" in ''|'#'*) continue ;; esac
+            rm -rfv -- "repo/$path" || true
+          done < delete.list
+
+      - name: Commit and push changes
+        shell: sh
+        env:
+          TEMPLATE_TAG: ${{ needs.prepare-template.outputs.template_tag }}
+        run: |
+          cd repo
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No changes to commit"
+            exit 0
+          fi
+          git config user.name "ansible-repo-updater[bot]"
+          git config user.email "ansible-repo-updater[bot]@users.noreply.github.com"
+          git commit -m "chore: sync from template ${TEMPLATE_TAG}"
+          git push origin HEAD
