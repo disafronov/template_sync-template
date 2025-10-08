@@ -1,4 +1,4 @@
-# updater-template
+# template_sync-template
 
 Automated synchronization of repositories from a template repository using GitHub Actions.
 
