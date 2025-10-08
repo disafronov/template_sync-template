@@ -152,6 +152,20 @@ jobs:
           while IFS= read -r raw || [ -n "$raw" ]; do
             path=$(printf '%s' "$raw" | sed 's/^[[:space:]]*//')
             case "$path" in ''|'#'*) continue ;; esac
+            
+            # Security: prevent path traversal and absolute paths
+            if [[ "$path" == /* ]] || [[ "$path" == *../* ]] || [[ "$path" == ../* ]]; then
+              echo "ERROR: Unsafe path: $path" >&2
+              exit 1
+            fi
+            
+            # Additional safety: ensure path resolves within repo
+            full_path="repo/$path"
+            if [[ "$(realpath "$full_path" 2>/dev/null)" != "$(realpath "repo" 2>/dev/null)"/* ]]; then
+              echo "ERROR: Path outside repo: $path" >&2
+              exit 1
+            fi
+            
             rm -rfv -- "repo/$path" || true
           done < delete.list
 
