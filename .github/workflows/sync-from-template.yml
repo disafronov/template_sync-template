@@ -164,7 +164,9 @@ jobs:
 
             # Additional safety: ensure path resolves within repo
             full_path="repo/$path"
-            if [ "$(realpath "$full_path" 2>/dev/null)" != "$(realpath "repo" 2>/dev/null)"/* ]; then
+            repo_path="$(realpath "repo" 2>/dev/null)/"
+            full_resolved="$(realpath "$full_path" 2>/dev/null)"
+            if [ "${full_resolved#"$repo_path"}" = "$full_resolved" ]; then
               echo "ERROR: Path outside repo: $path" >&2
               exit 1
             fi
