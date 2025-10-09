@@ -50,7 +50,7 @@ jobs:
       - name: Read template repository
         id: template
         shell: sh
-        run: echo "template_repo=$(cat template.repo)" >> $GITHUB_OUTPUT
+        run: echo "template_repo=$(cat template.repo)" >> "$GITHUB_OUTPUT"
 
       - name: Checkout template repository
         uses: actions/checkout@v5
