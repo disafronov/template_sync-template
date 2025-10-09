@@ -16,7 +16,7 @@ jobs:
       repos_matrix: ${{ steps.repos.outputs.repos_matrix }}
     steps:
       - name: Checkout updater repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Verify required files exist and are valid
         id: verify
@@ -52,7 +52,7 @@ jobs:
         run: echo "template_repo=$(cat template.repo)" >> $GITHUB_OUTPUT
 
       - name: Checkout template repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: ${{ steps.template.outputs.template_repo }}
           path: template
@@ -119,7 +119,7 @@ jobs:
         repo: ${{ fromJson(needs.prepare-template.outputs.repos_matrix) }}
     steps:
       - name: Checkout updater repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Download template artifact
         uses: actions/download-artifact@v4
@@ -128,7 +128,7 @@ jobs:
           path: template
 
       - name: Checkout target repository (default branch)
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           repository: ${{ matrix.repo }}
           path: repo
