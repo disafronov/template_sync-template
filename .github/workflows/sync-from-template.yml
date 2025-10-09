@@ -156,7 +156,7 @@ jobs:
 
             # Security: prevent path traversal and absolute paths
             case "$path" in
-              /*|*../*|../*)
+              *../*|/*)
                 echo "ERROR: Unsafe path: $path" >&2
                 exit 1
                 ;;
