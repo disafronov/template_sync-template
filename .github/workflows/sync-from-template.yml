@@ -178,6 +178,7 @@ jobs:
         shell: sh
         env:
           TEMPLATE_TAG: ${{ needs.prepare-template.outputs.template_tag }}
+          COMMIT_PREFIX: ${{ vars.COMMIT_PREFIX }}
         run: |
           cd repo
           git add -A
@@ -187,5 +188,6 @@ jobs:
           fi
           git config user.name "ansible-repo-updater[bot]"
           git config user.email "ansible-repo-updater[bot]@users.noreply.github.com"
-          git commit -m "refactor: sync from template ${TEMPLATE_TAG}"
+          COMMIT_PREFIX="${COMMIT_PREFIX:-chore:}"
+          git commit -m "${COMMIT_PREFIX} sync from template ${TEMPLATE_TAG}"
           git push origin HEAD
