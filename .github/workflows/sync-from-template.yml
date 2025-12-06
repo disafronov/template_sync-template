@@ -187,5 +187,5 @@ jobs:
           fi
           git config user.name "ansible-repo-updater[bot]"
           git config user.email "ansible-repo-updater[bot]@users.noreply.github.com"
-          git commit -m "chore: sync from template ${TEMPLATE_TAG}"
+          git commit -m "refactor: sync from template ${TEMPLATE_TAG}"
           git push origin HEAD
