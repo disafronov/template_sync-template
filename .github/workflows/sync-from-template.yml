@@ -188,6 +188,6 @@ jobs:
           fi
           git config user.name "ansible-repo-updater[bot]"
           git config user.email "ansible-repo-updater[bot]@users.noreply.github.com"
-          COMMIT_PREFIX="${COMMIT_PREFIX:-chore:}"
+          COMMIT_PREFIX="${COMMIT_PREFIX:-chore}"
           git commit -m "${COMMIT_PREFIX}: sync from template ${TEMPLATE_TAG}"
           git push origin HEAD
