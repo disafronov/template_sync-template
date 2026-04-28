@@ -1,3 +1,9 @@
+## [1.4.1](https://github.com/disafronov/template_sync-template/compare/v1.4.0...v1.4.1) (2026-04-28)
+
+### Bug Fixes
+
+* bot name ([8bc5690](https://github.com/disafronov/template_sync-template/commit/8bc569097de8870cd861015e5547723976ad713a))
+
 ## [1.4.0](https://github.com/disafronov/template_sync-template/compare/v1.3.4...v1.4.0) (2026-04-28)
 
 ### Features
