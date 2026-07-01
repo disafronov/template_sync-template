@@ -1,3 +1,5 @@
+## [1.4.2](https://github.com/disafronov/template_sync-template/compare/v1.4.1...v1.4.2) (2026-07-01)
+
 ## [1.4.1](https://github.com/disafronov/template_sync-template/compare/v1.4.0...v1.4.1) (2026-04-28)
 
 ### Bug Fixes
