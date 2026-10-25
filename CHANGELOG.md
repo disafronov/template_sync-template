@@ -1,3 +1,9 @@
+## [1.5.7](https://github.com/disafronov/template_sync-template/compare/v1.5.6...v1.5.7) (2026-10-25)
+
+### Bug Fixes
+
+* **ci:** use environment for Git commit identity ([d71bb34](https://github.com/disafronov/template_sync-template/commit/d71bb345473ab2d9cc3c35b1baa07402a1a3e989))
+
 ## [1.5.6](https://github.com/disafronov/template_sync-template/compare/v1.5.5...v1.5.6) (2026-10-25)
 
 ### Bug Fixes
