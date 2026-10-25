@@ -1,3 +1,10 @@
+## [1.5.4](https://github.com/disafronov/template_sync-template/compare/v1.5.3...v1.5.4) (2026-10-25)
+
+### Bug Fixes
+
+* correct stable SemVer selector expression ([0bd287d](https://github.com/disafronov/template_sync-template/commit/0bd287d1db7133fe48aac6aa41ea34a117a29691))
+* select only stable SemVer template tags ([69736a9](https://github.com/disafronov/template_sync-template/commit/69736a9c0b84c13d12fb13548b0d533892562924))
+
 ## [1.5.3](https://github.com/disafronov/template_sync-template/compare/v1.5.2...v1.5.3) (2026-10-25)
 
 ## [1.5.2](https://github.com/disafronov/template_sync-template/compare/v1.5.1...v1.5.2) (2026-10-25)
