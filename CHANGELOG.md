@@ -1,3 +1,5 @@
+## [1.5.1](https://github.com/disafronov/template_sync-template/compare/v1.5.0...v1.5.1) (2026-10-25)
+
 ## [1.5.0](https://github.com/disafronov/template_sync-template/compare/v1.4.5...v1.5.0) (2026-10-25)
 
 ### Features
