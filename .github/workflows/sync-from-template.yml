@@ -10,6 +10,8 @@ permissions:
   contents: read
 
 env:
+  GIT_AUTHOR_NAME: github-actions[bot]
+  GIT_AUTHOR_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
   GIT_COMMITTER_NAME: github-actions[bot]
   GIT_COMMITTER_EMAIL: 41898282+github-actions[bot]@users.noreply.github.com
 
@@ -191,8 +193,6 @@ jobs:
             echo "No changes to commit"
             exit 0
           fi
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           is_template=$(gh api "repos/$TARGET_REPO" --jq '.is_template')
           commit_prefix=chore
           if [ "$is_template" = true ]; then
