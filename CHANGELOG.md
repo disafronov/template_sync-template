@@ -1,3 +1,9 @@
+## [1.5.0](https://github.com/disafronov/template_sync-template/compare/v1.4.5...v1.5.0) (2026-10-25)
+
+### Features
+
+* release synchronized templates automatically ([4367658](https://github.com/disafronov/template_sync-template/commit/436765880d5545f73969d2fb1a22cb4871b598b4))
+
 ## [1.4.5](https://github.com/disafronov/template_sync-template/compare/v1.4.4...v1.4.5) (2026-10-25)
 
 ## [1.4.4](https://github.com/disafronov/template_sync-template/compare/v1.4.3...v1.4.4) (2026-10-23)
