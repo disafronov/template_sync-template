@@ -1,3 +1,9 @@
+## [1.5.6](https://github.com/disafronov/template_sync-template/compare/v1.5.5...v1.5.6) (2026-10-25)
+
+### Bug Fixes
+
+* **ci:** attribute generated sync commits to GitHub Actions ([840c2da](https://github.com/disafronov/template_sync-template/commit/840c2daa6883b6f67e8f0f305175b17191b3b36c))
+
 ## [1.5.5](https://github.com/disafronov/template_sync-template/compare/v1.5.4...v1.5.5) (2026-10-25)
 
 ### Bug Fixes
