@@ -1,3 +1,9 @@
+## [1.5.5](https://github.com/disafronov/template_sync-template/compare/v1.5.4...v1.5.5) (2026-10-25)
+
+### Bug Fixes
+
+* **ci:** use GitHub Actions as the committer ([dffe790](https://github.com/disafronov/template_sync-template/commit/dffe7909429174faf02e3af7ac28fdd4b6dd46eb))
+
 ## [1.5.4](https://github.com/disafronov/template_sync-template/compare/v1.5.3...v1.5.4) (2026-10-25)
 
 ### Bug Fixes
