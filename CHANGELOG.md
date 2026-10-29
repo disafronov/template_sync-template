@@ -1,3 +1,9 @@
+## [1.5.10](https://github.com/disafronov/template_sync-template/compare/v1.5.9...v1.5.10) (2026-10-29)
+
+### Code Refactoring
+
+* sync from template v2.3.2 ([9429676](https://github.com/disafronov/template_sync-template/commit/9429676986e542fd8db2688d209d45d481a5fdb2))
+
 ## [1.5.9](https://github.com/disafronov/template_sync-template/compare/v1.5.8...v1.5.9) (2026-10-27)
 
 ### Code Refactoring
