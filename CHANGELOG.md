@@ -1,3 +1,9 @@
+## [1.5.11](https://github.com/disafronov/template_sync-template/compare/v1.5.10...v1.5.11) (2026-10-30)
+
+### Bug Fixes
+
+* **dependabot:** use repository root for GitHub Actions updates ([29e938d](https://github.com/disafronov/template_sync-template/commit/29e938d342e8135d1f287582e8b972414378de85))
+
 ## [1.5.10](https://github.com/disafronov/template_sync-template/compare/v1.5.9...v1.5.10) (2026-10-29)
 
 ### Code Refactoring
