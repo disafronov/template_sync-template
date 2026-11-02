@@ -1,3 +1,9 @@
+## [1.5.14](https://github.com/disafronov/template_sync-template/compare/v1.5.13...v1.5.14) (2026-11-02)
+
+### Bug Fixes
+
+* include template repository in sync commit message ([e1856f7](https://github.com/disafronov/template_sync-template/commit/e1856f7a1e7a1470c2a399eee57734abb0750416))
+
 ## [1.5.13](https://github.com/disafronov/template_sync-template/compare/v1.5.12...v1.5.13) (2026-11-02)
 
 ### Code Refactoring
