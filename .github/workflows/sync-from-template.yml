@@ -19,6 +19,7 @@ jobs:
   prepare-template:
     runs-on: ubuntu-latest
     outputs:
+      template_repo: ${{ steps.template.outputs.template_repo }}
       template_tag: ${{ steps.get-tag.outputs.template_tag }}
       repos_matrix: ${{ steps.repos.outputs.repos_matrix }}
     steps:
@@ -185,6 +186,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.REPO_UPDATE_TOKEN }}
           TARGET_REPO: ${{ matrix.repo }}
+          TEMPLATE_REPO: ${{ needs.prepare-template.outputs.template_repo }}
           TEMPLATE_TAG: ${{ needs.prepare-template.outputs.template_tag }}
         run: |
           cd repo
@@ -198,5 +200,5 @@ jobs:
           if [ "$is_template" = true ]; then
             commit_prefix=refactor
           fi
-          git commit -s -m "${commit_prefix}: sync from template ${TEMPLATE_TAG}"
+          git commit -s -m "${commit_prefix}: sync from ${TEMPLATE_REPO} ${TEMPLATE_TAG}"
           git push origin HEAD
