@@ -1,3 +1,9 @@
+## [1.5.17](https://github.com/disafronov/template_sync-template/compare/v1.5.16...v1.5.17) (2026-11-03)
+
+### Bug Fixes
+
+* offset scheduled syncs from top of hour ([683b9f0](https://github.com/disafronov/template_sync-template/commit/683b9f03b9bbc3105c6a2cda50220af760c35331))
+
 ## [1.5.16](https://github.com/disafronov/template_sync-template/compare/v1.5.15...v1.5.16) (2026-11-03)
 
 ### Bug Fixes
