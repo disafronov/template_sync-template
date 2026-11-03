@@ -1,3 +1,9 @@
+## [1.5.16](https://github.com/disafronov/template_sync-template/compare/v1.5.15...v1.5.16) (2026-11-03)
+
+### Bug Fixes
+
+* run template synchronization four times nightly ([a36e2d5](https://github.com/disafronov/template_sync-template/commit/a36e2d5559202c8b47fd682bed29fb19d0ce1ba1))
+
 ## [1.5.15](https://github.com/disafronov/template_sync-template/compare/v1.5.14...v1.5.15) (2026-11-03)
 
 ### Code Refactoring
