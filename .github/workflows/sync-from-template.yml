@@ -3,7 +3,7 @@ name: Sync repos from template
 
 "on":
   schedule:
-    - cron: '0 1-4 * * *'
+    - cron: '17 1-4 * * *'
   workflow_dispatch:
 
 permissions:
