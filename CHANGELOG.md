@@ -1,3 +1,9 @@
+## [1.5.19](https://github.com/disafronov/template_sync-template/compare/v1.5.18...v1.5.19) (2026-11-10)
+
+### Bug Fixes
+
+* compare template files by checksum during sync ([647cd63](https://github.com/disafronov/template_sync-template/commit/647cd63e9b182710c1e417d705a379ae9995b922))
+
 ## [1.5.18](https://github.com/disafronov/template_sync-template/compare/v1.5.17...v1.5.18) (2026-11-05)
 
 ### Code Refactoring
