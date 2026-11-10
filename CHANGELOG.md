@@ -1,3 +1,9 @@
+## [1.5.22](https://github.com/disafronov/template_sync-template/compare/v1.5.21...v1.5.22) (2026-11-10)
+
+### Bug Fixes
+
+* count logical lines in template.repo ([d805d34](https://github.com/disafronov/template_sync-template/commit/d805d34ad601d3a9c639c05b2835d4055ea546d6))
+
 ## [1.5.21](https://github.com/disafronov/template_sync-template/compare/v1.5.20...v1.5.21) (2026-11-10)
 
 ### Bug Fixes
