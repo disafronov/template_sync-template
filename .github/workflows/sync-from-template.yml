@@ -34,7 +34,7 @@ jobs:
             echo "template.repo not found or empty" >&2
             exit 1
           fi
-          if [ "$(wc -l < template.repo)" -ne 1 ]; then
+          if [ "$(awk 'END {print NR}' template.repo)" -ne 1 ]; then
             echo "template.repo must contain exactly one line" >&2
             exit 1
           fi
