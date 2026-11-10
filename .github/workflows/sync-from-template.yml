@@ -184,7 +184,7 @@ jobs:
               exit 1
             fi
 
-            rm -rfv -- "repo/$path" || true
+            rm -rfv -- "repo/$path"
           done < delete.list
 
       - name: Commit and push changes
