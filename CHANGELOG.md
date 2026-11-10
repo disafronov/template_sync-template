@@ -1,3 +1,9 @@
+## [1.5.20](https://github.com/disafronov/template_sync-template/compare/v1.5.19...v1.5.20) (2026-11-10)
+
+### Bug Fixes
+
+* skip missing paths during template cleanup ([04fa9f9](https://github.com/disafronov/template_sync-template/commit/04fa9f98943f84cfbbdac86cbe31578ea2450ded))
+
 ## [1.5.19](https://github.com/disafronov/template_sync-template/compare/v1.5.18...v1.5.19) (2026-11-10)
 
 ### Bug Fixes
