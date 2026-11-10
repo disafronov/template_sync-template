@@ -1,3 +1,9 @@
+## [1.5.21](https://github.com/disafronov/template_sync-template/compare/v1.5.20...v1.5.21) (2026-11-10)
+
+### Bug Fixes
+
+* fail synchronization when deletion fails ([54958b3](https://github.com/disafronov/template_sync-template/commit/54958b311c028eab81d5ce8babc790dffeff9638))
+
 ## [1.5.20](https://github.com/disafronov/template_sync-template/compare/v1.5.19...v1.5.20) (2026-11-10)
 
 ### Bug Fixes
