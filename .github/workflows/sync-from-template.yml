@@ -145,7 +145,7 @@ jobs:
       - name: Apply updates from template per include.list
         shell: sh
         run: |
-          rsync -av \
+          rsync -avc \
             --include-from=include.list \
             --exclude='*' \
             --delete-after \
