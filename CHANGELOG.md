@@ -1,3 +1,9 @@
+## [1.5.25](https://github.com/disafronov/template_sync-template/compare/v1.5.24...v1.5.25) (2026-11-23)
+
+### Code Refactoring
+
+* sync from disafronov/semantic-basic-template v4.0.4 ([3e4fc06](https://github.com/disafronov/template_sync-template/commit/3e4fc06da86b540722cf8cafa367029599aa35ac))
+
 ## [1.5.24](https://github.com/disafronov/template_sync-template/compare/v1.5.23...v1.5.24) (2026-11-20)
 
 ### Code Refactoring
